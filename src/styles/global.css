@@ -1,0 +1,20 @@
+:root {
+  --clr-background: hsl(40, 100%, 90%);
+  --clr-text: #332;
+  --clr-secondary: hsl(40, 30%, 70%);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--clr-background);
+  color: var(--clr-text);
+}
+
+main {
+  padding: 2rem;
+}
