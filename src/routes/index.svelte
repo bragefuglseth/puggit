@@ -20,7 +20,8 @@
     <a href="/set/create">
       <Card>
         <div class="create-card-content">
-          <h3>Create set</h3>
+          <span class="create-card-icon">+</span>
+          <h3 class="create-card-text">Create set</h3>
         </div>
       </Card>
     </a>
@@ -41,8 +42,17 @@
 
 <style>
   .create-card-content {
-    height: 8rem;
+    height: 10rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.4rem;
   }
+
+  .create-card-text {
+    margin: 0;
+  }
+
   .all-sets {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
