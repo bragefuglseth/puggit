@@ -1,45 +1,54 @@
 <script>
   import { sets } from '$lib/stores/sets.js';
+  import { onDestroy } from 'svelte';
+  import { flip } from 'svelte/animate';
+  import SetCard from '$lib/components/set-card.svelte';
+  import Card from '$lib/components/card.svelte';
+
+  function deleteSet(id) {
+    console.log($sets);
+    const newSets = $sets.filter((set) => {
+      return set.id !== id;
+    });
+    sets.set(newSets);
+  }
 </script>
 
 <h2>My sets</h2>
 <ul class="all-sets">
   <li>
     <a href="/set/create">
-      <div class="set-card">
-        <h3>Create set</h3>
-      </div>
+      <Card>
+        <div class="create-card-content">
+          <h3>Create set</h3>
+        </div>
+      </Card>
     </a>
   </li>
-  {#each $sets as set}
-    <li>
+  {#each $sets as set (set.id)}
+    <li animate:flip={{ duration: 200 }}>
       <a href={`/set/${set.id}`}>
-        <div class="set-card">
-          <h3>{set.name}</h3>
-          <p>
-            {set.elements.length}
-            {set.elements.length === 1 ? 'element' : 'elements'}
-          </p>
-        </div>
+        <SetCard
+          {set}
+          on:delete={(e) => {
+            deleteSet(e.detail.id);
+          }}
+        />
       </a>
     </li>
   {/each}
 </ul>
 
 <style>
+  .create-card-content {
+    height: 8rem;
+  }
   .all-sets {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
     gap: 0.5rem;
     list-style-type: none;
     padding: 0;
-  }
-  .set-card {
-    border: 1px solid var(--clr-secondary);
-    height: 8rem;
-    border-radius: 15px;
-    padding: 1rem;
-    color: var(--clr-text);
   }
   a {
     text-decoration: none;
