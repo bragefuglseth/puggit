@@ -23,7 +23,7 @@
   onDestroy(() => {
     unsub();
   });
-  const currentSet = setList.find((set) => set.id === parseInt(id));
+  const currentSet = setList.find((set) => set.id === id);
 </script>
 
 <h2>{currentSet.name}</h2>
