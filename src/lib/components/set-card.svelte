@@ -13,8 +13,8 @@
   }
 </script>
 
-<div class="card-wrapper">
-  <Card height="8rem">
+<span class="card-wrapper">
+  <Card>
     <div class="card-content">
       <h3>{set.name}</h3>
       <p>
@@ -26,13 +26,12 @@
       </div>
     </div>
   </Card>
-</div>
+</span>
 
 <style>
   .card-content {
-    height: 100%;
     position: relative;
-    height: 8rem;
+    height: 10rem;
   }
 
   .card-options {
