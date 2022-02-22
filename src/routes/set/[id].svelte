@@ -10,7 +10,7 @@
 
 <script>
   import { sets } from '$lib/stores/sets.js';
-  import { onDestroy, onMount } from 'svelte';
+  import { onDestroy } from 'svelte';
 
   export let id;
 
