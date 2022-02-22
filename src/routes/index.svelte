@@ -1,118 +1,27 @@
 <script>
   import { sets } from '$lib/stores/sets.js';
-
-  // For inserting mock data
-  // sets.set([
-  //   {
-  //     name: 'Spanish',
-  //     id: 1,
-  //     elements: [
-  //       [['Hola'], ['Hello']],
-  //       [['Amigos'], ['Friends']],
-  //       [['Chao'], ['Bye']],
-  //     ],
-  //   },
-  //   {
-  //     name: 'German',
-  //     id: 2,
-  //     elements: [
-  //       [['Hola'], ['Hello']],
-  //       [['Amigos'], ['Friends']],
-  //       [['Chao'], ['Bye']],
-  //     ],
-  //   },
-  //   {
-  //     name: 'German',
-  //     id: 3,
-  //     elements: [
-  //       [['Hola'], ['Hello']],
-  //       [['Amigos'], ['Friends']],
-  //       [['Chao'], ['Bye']],
-  //     ],
-  //   },
-  //   {
-  //     name: 'Latin',
-  //     id: 4,
-  //     elements: [
-  //       [['Hola'], ['Hello']],
-  //       [['Amigos'], ['Friends']],
-  //       [['Chao'], ['Bye']],
-  //     ],
-  //   },
-  //   {
-  //     name: 'Greek',
-  //     id: 5,
-  //     elements: [
-  //       [['Hola'], ['Hello']],
-  //       [['Amigos'], ['Friends']],
-  //       [['Chao'], ['Bye']],
-  //     ],
-  //   },
-  //   {
-  //     name: 'Albanian',
-  //     id: 6,
-  //     elements: [
-  //       [['Hola'], ['Hello']],
-  //       [['Amigos'], ['Friends']],
-  //       [['Chao'], ['Bye']],
-  //     ],
-  //   },
-  //   {
-  //     name: 'Italian',
-  //     id: 7,
-  //     elements: [
-  //       [['Hola'], ['Hello']],
-  //       [['Amigos'], ['Friends']],
-  //       [['Chao'], ['Bye']],
-  //     ],
-  //   },
-  //   {
-  //     name: 'Spanish',
-  //     id: 8,
-  //     elements: [
-  //       [['Hola'], ['Hello']],
-  //       [['Amigos'], ['Friends']],
-  //       [['Chao'], ['Bye']],
-  //     ],
-  //   },
-  //   {
-  //     name: 'Georgian',
-  //     id: 9,
-  //     elements: [
-  //       [['Hola'], ['Hello']],
-  //       [['Amigos'], ['Friends']],
-  //       [['Chao'], ['Bye']],
-  //     ],
-  //   },
-  //   {
-  //     name: 'English',
-  //     id: 10,
-  //     elements: [
-  //       [['Hola'], ['Hello']],
-  //       [['Amigos'], ['Friends']],
-  //       [['Chao'], ['Bye']],
-  //     ],
-  //   },
-  //   {
-  //     name: 'English',
-  //     id: 11,
-  //     elements: [
-  //       [['Hola'], ['Hello']],
-  //       [['Amigos'], ['Friends']],
-  //       [['Chao'], ['Bye']],
-  //     ],
-  //   },
-  // ]);
 </script>
 
 <h2>My sets</h2>
 <ul class="all-sets">
+  <li>
+    <a href="/set/create">
+      <div class="set-card">
+        <h3>Create set</h3>
+      </div>
+    </a>
+  </li>
   {#each $sets as set}
-    <li class="set-card">
+    <li>
       <a href={`/set/${set.id}`}>
-        <h3>{set.name}</h3>
-        <p>{set.elements.length} elements</p></a
-      >
+        <div class="set-card">
+          <h3>{set.name}</h3>
+          <p>
+            {set.elements.length}
+            {set.elements.length === 1 ? 'element' : 'elements'}
+          </p>
+        </div>
+      </a>
     </li>
   {/each}
 </ul>
@@ -127,7 +36,12 @@
   }
   .set-card {
     border: 1px solid var(--clr-secondary);
+    height: 8rem;
     border-radius: 15px;
     padding: 1rem;
+    color: var(--clr-text);
+  }
+  a {
+    text-decoration: none;
   }
 </style>
