@@ -1,5 +1,8 @@
 <header>
-  <h1>Puggit</h1>
+  <a href="/">
+    <h1 class="logo">Puggit</h1>
+  </a>
+
   <nav>
     <ul>
       <li>
@@ -16,6 +19,15 @@
 </header>
 
 <style>
+  .logo {
+    cursor: pointer;
+  }
+
+  header a {
+    text-decoration: none;
+    color: var(--clr-text);
+  }
+
   header {
     display: flex;
     justify-content: space-between;
