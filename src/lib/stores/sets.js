@@ -4,11 +4,13 @@ import { writable } from 'svelte/store';
 const LOCAL_SETS_KEY = 'puggit.sets';
 
 // If script is executed on server, set the initial value to an empty array
-const initialValue = browser
-  ? JSON.parse(localStorage.getItem(LOCAL_SETS_KEY))
-  : [];
+function getInitialValue() {
+  if (browser && localStorage.getItem(LOCAL_SETS_KEY))
+    return JSON.parse(localStorage.getItem(LOCAL_SETS_KEY));
+  return [];
+}
 
-export const sets = writable(initialValue);
+export const sets = writable(getInitialValue());
 
 // Whenever the value of this store updates, save it to localstorage
 sets.subscribe((value) => {
