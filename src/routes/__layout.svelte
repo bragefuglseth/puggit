@@ -5,4 +5,15 @@
 
 <Header />
 
-<main><slot /></main>
+<div class="container">
+  <main>
+    <slot />
+  </main>
+</div>
+
+<style>
+  .container {
+    max-width: 960px;
+    margin: 5rem auto 0;
+  }
+</style>
