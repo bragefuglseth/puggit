@@ -20,7 +20,7 @@ Roadmap:
 
 ## Technical details
 
-Built with [Svelte](https://svelte.dev) and [SvelteKit](https://kit.svelte.dev). Currently not deployed anywhere, but you can clone the repo, install the required dependencies, run `npm run preview` and access the site on `https://localhost:3000`. Contributions are welcome, but you'll probably get stuck with my terrible code 🤪
+Built with [Svelte](https://svelte.dev) and [SvelteKit](https://kit.svelte.dev). Currently not deployed anywhere, but you can clone the repo, install the required dependencies, run `npm run preview` and access the site on `localhost:3000`. Contributions are welcome, but you'll probably get stuck with my terrible code 🤪
 
 ## Why "Puggit"?
 
