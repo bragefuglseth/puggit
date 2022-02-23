@@ -1,7 +1,11 @@
 :root {
-  --clr-background: hsl(40, 100%, 90%);
-  --clr-text: #332;
-  --clr-secondary: hsl(40, 30%, 70%);
+  --clr-background: #f9f2d2;
+  --clr-background-alt: #b2ae99;
+  --clr-text: #32231b;
+  --clr-text-alt: #978278;
+  --clr-primary: #1d7874;
+  --clr-primary-alt: #679289;
+  --clr-secondary: #ed6a5a;
 }
 
 * {
@@ -13,16 +17,29 @@
 body {
   background: var(--clr-background);
   color: var(--clr-text);
+  font-family: 'Noto Serif', serif;
+  font-weight: 400;
 }
 
 main {
   padding: 2rem;
 }
 
+h1,
 h2,
 h3,
 h4 {
   line-height: 2em;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.2rem;
 }
 
 p {
