@@ -28,6 +28,8 @@
     newSet.id = Date.now().toString();
     // Basic validation
     if (!newSet.name.trim()) return (formError = 'Your set needs a name');
+    if (newSet.name.trim().length > 39)
+      return (formError = "The name of your set can't exceed 30 characters");
     for (const element of newSet.elements) {
       if (!element[0][0].trim() || !element[1][0].trim())
         return (formError = "Fields can't be empty");
@@ -42,7 +44,7 @@
   }
 </script>
 
-<h2>Create set</h2>
+<h1>Create set</h1>
 
 <form on:submit|preventDefault>
   <label for="set-name">Name</label>
