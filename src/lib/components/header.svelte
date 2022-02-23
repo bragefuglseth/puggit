@@ -1,17 +1,17 @@
 <header>
   <a href="/">
-    <h1 class="logo">Puggit</h1>
+    <img class="logo" src="/img/puggit-wordmark.svg" alt="Puggit" />
   </a>
 
   <nav>
     <ul>
-      <li>
+      <li class="nav-element">
         <a href="/">Home</a>
       </li>
-      <li>
+      <li class="nav-element">
         <a href="/about">About</a>
       </li>
-      <li>
+      <li class="nav-element">
         <a href="/settings">Settings</a>
       </li>
     </ul>
@@ -21,6 +21,10 @@
 <style>
   .logo {
     cursor: pointer;
+    width: auto;
+    height: 2.5rem;
+    position: relative;
+    top: 0.2rem;
   }
 
   header a {
@@ -34,7 +38,7 @@
     align-items: center;
     margin: 0 auto;
     padding: 1rem 2rem;
-    border-bottom: 1px solid var(--clr-secondary);
+    border-bottom: 1px solid var(--clr-background-alt);
   }
 
   ul {
@@ -42,5 +46,14 @@
     gap: 2rem;
     list-style-type: none;
     padding: 0;
+  }
+
+  .nav-element a {
+    font-family: 'Montserrat', sans-serif;
+    transition: color 200ms;
+  }
+
+  .nav-element:hover a {
+    color: var(--clr-primary);
   }
 </style>
