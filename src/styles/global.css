@@ -8,6 +8,11 @@
   --clr-secondary: #ed6a5a;
 }
 
+::selection {
+  background-color: var(--clr-primary);
+  color: var(--clr-background);
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
