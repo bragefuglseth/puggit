@@ -49,6 +49,7 @@
 
   .create-card-text {
     margin: 0;
+    font-weight: normal;
   }
 
   .set-list {
