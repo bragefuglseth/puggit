@@ -1,10 +1,13 @@
 <script>
   import { sets } from '$lib/stores/sets.js';
   import { goto } from '$app/navigation';
+  import { fade } from 'svelte/transition';
   import Input from '$lib/components/input.svelte';
+  import Button from '$lib/components/button.svelte';
+  import Card from '$lib/components/card.svelte';
 
   let newSet = {
-    name: 'Untitled set',
+    name: '',
     id: null,
     elements: [[[''], ['']]],
   };
@@ -48,32 +51,61 @@
 <h1>Create set</h1>
 
 <form on:submit|preventDefault>
-  <label for="set-name">Name</label>
-  <Input name="set-name" bind:value={newSet.name} />
+  <Input
+    name="set-name"
+    label="Name"
+    bind:value={newSet.name}
+    placeholder="Enter a name for your set…"
+  />
+  {#each newSet.elements as element}
+    <div in:fade|local={{ duration: 200 }}>
+      <Card>
+        <div class="term-definition">
+          <div>
+            <Input
+              name={`input-a-${newSet.elements.indexOf(element)}`}
+              bind:value={element[0][0]}
+              label="Term"
+            />
+          </div>
+
+          <div>
+            <Input
+              name={`input-b-${newSet.elements.indexOf(element)}`}
+              bind:value={element[1][0]}
+              label="Definition"
+              on:keydown={(e) => {
+                handleKeypress(e);
+              }}
+            />
+          </div>
+        </div>
+      </Card>
+    </div>
+  {/each}
   <div>
-    {#each newSet.elements as element}
-      <div>
-        <Input
-          name={`input-a-${newSet.elements.indexOf(element)}`}
-          bind:value={element[0][0]}
-          label="Term"
-        />
-        <Input
-          name={`input-b-${newSet.elements.indexOf(element)}`}
-          bind:value={element[1][0]}
-          label="Definition"
-          on:keydown={(e) => {
-            handleKeypress(e);
-          }}
-        />
-      </div>
-    {/each}
+    <Button on:click={addElement}>Add element</Button>
+    <Button type="primary" on:click={handleSubmit}>Save</Button>
   </div>
 
-  <button type="button" on:click|preventDefault={addElement}>Add element</button
-  >
-  <button type="button" on:click={handleSubmit}>Save</button>
   {#if formError}
     <p>{formError}</p>
   {/if}
 </form>
+
+<style>
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .term-definition {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .term-definition > * {
+    flex-grow: 1;
+  }
+</style>
