@@ -1,6 +1,7 @@
 <script>
   import { sets } from '$lib/stores/sets.js';
   import { goto } from '$app/navigation';
+  import Input from '$lib/components/input.svelte';
 
   let newSet = {
     name: 'Untitled set',
@@ -48,27 +49,22 @@
 
 <form on:submit|preventDefault>
   <label for="set-name">Name</label>
-  <input type="text" id="set-name" bind:value={newSet.name} />
+  <Input name="set-name" bind:value={newSet.name} />
   <div>
     {#each newSet.elements as element}
       <div>
-        <!-- The IDs and for-attributes here are dynamically generated -->
-        <label for={`input-a-${newSet.elements.indexOf(element)}`}>Term</label>
-        <input
-          type="text"
-          id={`input-a-${newSet.elements.indexOf(element)}`}
+        <Input
+          name={`input-a-${newSet.elements.indexOf(element)}`}
           bind:value={element[0][0]}
+          label="Term"
         />
-        <label for={`input-b-${newSet.elements.indexOf(element)}`}
-          >Definition</label
-        >
-        <input
-          id={`input-b-${newSet.elements.indexOf(element)}`}
+        <Input
+          name={`input-b-${newSet.elements.indexOf(element)}`}
+          bind:value={element[0][1]}
+          label="Definition"
           on:keydown={(e) => {
             handleKeypress(e);
           }}
-          type="text"
-          bind:value={element[1][0]}
         />
       </div>
     {/each}
