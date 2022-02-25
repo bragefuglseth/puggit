@@ -18,7 +18,7 @@
 <ul class="set-list">
   <li>
     <a href="/set/create">
-      <Card type="primary">
+      <Card type="primary" hover>
         <div class="create-card-content">
           <span class="create-card-icon">+</span>
           <h3 class="create-card-text">Create set</h3>

@@ -27,7 +27,7 @@
   }}
 >
   <span class="card-wrapper">
-    <Card>
+    <Card hover>
       <div class="card-content">
         <h2>{`${set.name.slice(0, 20)}${set.name.length > 20 ? '…' : ''}`}</h2>
         <p>
@@ -45,8 +45,13 @@
 </a>
 
 <style>
-  .card-wrapper:hover h2 {
-    text-decoration: underline;
+  .card-wrapper p {
+    color: var(--clr-text-alt);
+    transition: color 200ms;
+  }
+
+  .card-wrapper:hover p {
+    color: var(--clr-text);
   }
 
   .card-content {

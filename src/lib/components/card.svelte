@@ -1,8 +1,9 @@
 <script>
   export let type = 'default';
+  export let hover = false;
 </script>
 
-<div class={type}>
+<div class:hover class={type}>
   <slot />
 </div>
 
@@ -14,19 +15,21 @@
     transition: border-color 200ms, color 200ms, background-color 200ms;
     overflow: hidden;
   }
+
   .default {
     border-color: var(--clr-background-alt);
     color: var(--clr-text);
   }
-  .default:hover {
+  .default.hover:hover {
     border-color: var(--clr-text);
   }
+
   .primary {
     border-color: var(--clr-primary);
     background-color: var(--clr-primary);
     color: var(--clr-background);
   }
-  .primary:hover {
+  .primary.hover:hover {
     border-color: var(--clr-primary-alt);
     background-color: var(--clr-primary-alt);
   }

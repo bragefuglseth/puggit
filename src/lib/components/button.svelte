@@ -15,17 +15,28 @@
     padding: 0.8em;
     border-radius: 5px;
     font-family: 'Montserrat';
+    font-size: 0.9rem;
     cursor: pointer;
-    transition: border-color 200ms, color 200ms;
+    transition: all 200ms;
   }
 
   button.default {
-    border: 1px solid var(--clr-text);
     color: var(--clr-text);
   }
 
   button.default:hover {
-    border-color: var(--clr-text-alt);
     color: var(--clr-text-alt);
+  }
+
+  button.primary {
+    border: 1px solid var(--clr-primary);
+    background-color: var(--clr-primary);
+    color: var(--clr-background);
+    margin: 0;
+  }
+
+  button.primary:hover {
+    border-color: var(--clr-primary-alt);
+    background-color: var(--clr-primary-alt);
   }
 </style>

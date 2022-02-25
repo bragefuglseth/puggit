@@ -1,6 +1,10 @@
 <script>
   import Header from '$lib/components/header.svelte';
   import '../styles/global.css';
+  import { page } from '$app/stores';
+  import { fade } from 'svelte/transition';
+
+  $: refresh = $page.url;
 </script>
 
 <svelte:head>
@@ -15,14 +19,14 @@
 
 <Header />
 
-<div class="container">
-  <main>
+{#key refresh}
+  <main in:fade={{ duration: 100 }}>
     <slot />
   </main>
-</div>
+{/key}
 
 <style>
-  .container {
+  main {
     max-width: 960px;
     margin: 5rem auto 0;
   }
