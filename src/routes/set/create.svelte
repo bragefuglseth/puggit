@@ -60,7 +60,7 @@
         />
         <Input
           name={`input-b-${newSet.elements.indexOf(element)}`}
-          bind:value={element[0][1]}
+          bind:value={element[1][0]}
           label="Definition"
           on:keydown={(e) => {
             handleKeypress(e);
