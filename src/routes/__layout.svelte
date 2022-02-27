@@ -20,7 +20,7 @@
 <Header />
 
 {#key refresh}
-  <main in:fade={{ duration: 100 }}>
+  <main in:fade={{ duration: 75 }}>
     <slot />
   </main>
 {/key}
