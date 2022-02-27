@@ -45,13 +45,15 @@
 </a>
 
 <style>
+  .card-wrapper h2 {
+    font-weight: normal;
+    color: var(--clr-text);
+  }
+
   .card-wrapper p {
     color: var(--clr-text-alt);
     transition: color 200ms;
-  }
-
-  .card-wrapper:hover p {
-    color: var(--clr-text);
+    font-size: 0.9rem;
   }
 
   .card-content {
