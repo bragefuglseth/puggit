@@ -7,7 +7,6 @@
   export let sets = [];
 
   function deleteSet(id) {
-    console.log($sets);
     const newSets = $sets.filter((set) => {
       return set.id !== id;
     });
