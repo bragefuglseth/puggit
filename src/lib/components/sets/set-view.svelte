@@ -5,32 +5,49 @@
 </script>
 
 <Card>
-  <div class="parent">
+  <div class="container">
     {#each set.elements as element}
-      <div class="child">
+      <div class="element-wrapper">
         <Card>
-          <p>{element[0][0]}</p>
+          <div class="element">
+            <div class="phrase">
+              <p>{element[0][0]}</p>
+            </div>
+            <div class="phrase">
+              <p>{element[1][0]}</p>
+            </div>
+          </div>
         </Card>
-        <Card><p>{element[1][0]}</p></Card>
       </div>
     {/each}
   </div>
 </Card>
 
 <style>
-  .parent {
+  .container {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    overflow: auto;
+    max-height: 25rem;
   }
 
-  .child {
+  .element {
     display: flex;
     gap: 1rem;
   }
 
-  .child > * {
-    flex-grow: 1;
+  .element > * {
+    flex: 1 0 50%;
+  }
+
+  .element > :first-child {
+    border-right: 1px solid var(--clr-background-alt);
+  }
+
+  .phrase {
+    padding: 1rem;
+    text-align: center;
   }
 
   p {
