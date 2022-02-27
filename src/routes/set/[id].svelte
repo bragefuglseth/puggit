@@ -26,7 +26,7 @@
   const currentSet = setList.find((set) => set.id === id);
 </script>
 
-<h2>{currentSet.name}</h2>
+<h1>{currentSet.name}</h1>
 {#each currentSet.elements as element}
   <p>{element[0][0]} - {element[1][0]}</p>
 {/each}
