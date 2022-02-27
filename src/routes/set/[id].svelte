@@ -9,24 +9,17 @@
 </script>
 
 <script>
+  import { browser } from '$app/env';
   import { sets } from '$lib/stores/sets.js';
-  import { onDestroy } from 'svelte';
+  import SetView from '$lib/components/sets/set-view.svelte';
 
   export let id;
 
-  let setList = [];
-
-  const unsub = sets.subscribe((value) => {
-    setList = value;
-  });
-
-  onDestroy(() => {
-    unsub();
-  });
-  const currentSet = setList.find((set) => set.id === id);
+  const set = $sets.find((set) => set.id === id);
 </script>
 
-<h1>{currentSet.name}</h1>
-{#each currentSet.elements as element}
-  <p>{element[0][0]} - {element[1][0]}</p>
-{/each}
+<!-- Do not render on server, will cause error -->
+{#if browser}
+  <h1>{set.name}</h1>
+  <SetView {set} />
+{/if}

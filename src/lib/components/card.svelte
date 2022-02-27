@@ -9,6 +9,7 @@
 
 <style>
   div {
+    width: 100%;
     border: 1px solid;
     border-radius: 10px;
     padding: 1rem;
