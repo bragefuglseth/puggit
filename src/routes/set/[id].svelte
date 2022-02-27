@@ -15,11 +15,7 @@
 
   export let id;
 
-  console.log($sets);
-
   const set = $sets.find((set) => set.id === id);
-
-  console.log(set);
 </script>
 
 <!-- Do not render on server, will cause error -->
