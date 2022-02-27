@@ -12,8 +12,12 @@
     border: 1px solid;
     border-radius: 10px;
     padding: 1rem;
-    transition: border-color 200ms, color 200ms, background-color 200ms;
+    transition: all 200ms;
     overflow: hidden;
+  }
+
+  div.hover:hover {
+    transform: scale(0.98);
   }
 
   .default {
@@ -21,7 +25,7 @@
     color: var(--clr-text);
   }
   .default.hover:hover {
-    border-color: var(--clr-text);
+    border-color: var(--clr-primary);
   }
 
   .primary {
