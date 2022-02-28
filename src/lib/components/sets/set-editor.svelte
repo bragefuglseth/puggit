@@ -8,7 +8,7 @@
 
   export let set = {
     name: '',
-    id: null,
+    id: undefined,
     elements: [[[''], ['']]],
   };
 
@@ -42,8 +42,8 @@
       set.id = Date.now().toString(16);
     }
     sets.update((sets) => {
-      return sets.filter((set) => {
-        return set.id !== id;
+      return sets.filter((validationSet) => {
+        return validationSet.id !== set.id;
       });
     });
     // Basic validation
