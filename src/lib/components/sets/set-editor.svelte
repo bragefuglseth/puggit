@@ -22,12 +22,12 @@
   // If tab is pressed in the last input, add a new element
   function handleKeypress(e) {
     if (
-      e.keyCode === 9 &&
+      e.key == 'Tab' &&
+      !e.shiftKey &&
       // This statement is really messy right now.
       // It'll have to be redone later
       !e.target.parentElement.parentElement.parentElement.parentElement
-        .parentElement.parentElement.nextElementSibling &&
-      !e.shiftKey
+        .parentElement.parentElement.nextElementSibling
     ) {
       addElement();
       e.target.style = 'outline: 2px solid red;';
