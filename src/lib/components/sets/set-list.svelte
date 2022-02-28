@@ -7,11 +7,11 @@
   export let sets = [];
 
   function deleteSet(id) {
-    console.log($sets);
-    const newSets = $sets.filter((set) => {
-      return set.id !== id;
+    sets.update((sets) => {
+      return sets.filter((set) => {
+        return set.id !== id;
+      });
     });
-    sets.set(newSets);
   }
 </script>
 
