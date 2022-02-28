@@ -1,4 +1,10 @@
 <script>
+  import SetEditor from '$lib/components/sets/set-editor.svelte';
+</script>
+
+<SetEditor />
+
+<!-- <script>
   import { sets } from '$lib/stores/sets.js';
   import { goto } from '$app/navigation';
   import { fade } from 'svelte/transition';
@@ -108,4 +114,4 @@
   .term-definition > * {
     flex-grow: 1;
   }
-</style>
+</style> -->
