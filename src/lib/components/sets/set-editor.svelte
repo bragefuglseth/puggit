@@ -19,21 +19,6 @@
     set.elements = [...currentElements, [[''], ['']]];
   }
 
-  // If tab is pressed in the last input, add a new element
-  function handleKeypress(e) {
-    if (
-      e.key == 'Tab' &&
-      !e.shiftKey &&
-      // This statement is really messy right now.
-      // It'll have to be redone later
-      !e.target.parentElement.parentElement.parentElement.parentElement
-        .parentElement.parentElement.nextElementSibling
-    ) {
-      addElement();
-      e.target.style = 'outline: 2px solid red;';
-    }
-  }
-
   function handleSubmit() {
     formError = '';
     // This way of assigning IDs is unbreakable unless the user intentionally messes with it.
@@ -90,9 +75,6 @@
                 name={`input-b-${set.elements.indexOf(element)}`}
                 bind:value={element[1][0]}
                 label="Definition"
-                on:keydown={(e) => {
-                  handleKeypress(e, element);
-                }}
               />
             </div>
           </div>

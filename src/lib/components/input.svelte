@@ -13,14 +13,7 @@
 <div>
   <label for={name}>{label}</label>
   <div class="container">
-    <input
-      type="text"
-      id={name}
-      bind:value
-      on:keydown
-      autocomplete="off"
-      {placeholder}
-    />
+    <input type="text" id={name} bind:value autocomplete="off" {placeholder} />
     <div class="focus-indicator" />
   </div>
 </div>
