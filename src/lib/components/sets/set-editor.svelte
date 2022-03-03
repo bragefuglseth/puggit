@@ -19,6 +19,17 @@
     set.elements = [...currentElements, [[''], ['']]];
   }
 
+  function handleAdd() {
+    addElement();
+    // SetTimeout fixes a bug where the input couldn't be found
+    setTimeout(() => {
+      const lastInput = document.querySelector(
+        `#input-a-${set.elements.length - 1}`
+      );
+      lastInput.focus();
+    });
+  }
+
   function handleSubmit() {
     formError = '';
     // This way of assigning IDs is unbreakable unless the user intentionally messes with it.
@@ -81,9 +92,9 @@
         </Card>
       </div>
     {/each}
+    <Button on:click={handleAdd}>Add element</Button>
   </div>
   <div>
-    <Button on:click={addElement}>Add element</Button>
     <Button type="primary" on:click={handleSubmit}>Save</Button>
   </div>
 
