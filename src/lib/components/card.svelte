@@ -3,7 +3,7 @@
   export let hover = false;
 </script>
 
-<div class:hover class={type}>
+<div on:click class:hover class={type}>
   <slot />
 </div>
 
@@ -16,7 +16,7 @@
     overflow: hidden;
   }
 
-  div.hover:hover {
+  div.hover:is(:hover, :focus) {
     transform: scale(0.98);
   }
 
