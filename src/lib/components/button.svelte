@@ -17,13 +17,14 @@
     font-size: 0.9rem;
     cursor: pointer;
     transition: background-color 200ms, border-color 200ms, color 200ms;
+    outline: none;
   }
 
   button.default {
     color: var(--clr-text);
   }
 
-  button.default:hover {
+  button.default:is(:hover, :focus) {
     color: var(--clr-text-alt);
   }
 
@@ -34,7 +35,7 @@
     margin: 0;
   }
 
-  button.primary:hover {
+  button.primary:is(:hover, :focus) {
     border-color: var(--clr-primary-alt);
     background-color: var(--clr-primary-alt);
   }
