@@ -13,11 +13,6 @@
   color: var(--clr-background);
 }
 
-a:focus,
-button:focus {
-  outline: 2px dashed var(--clr-primary-alt);
-}
-
 * {
   box-sizing: border-box;
   margin: 0;
@@ -55,4 +50,13 @@ h2 {
 p {
   line-height: 1.5em;
   margin-bottom: 0.5em;
+}
+
+button {
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9rem;
+  cursor: pointer;
 }
