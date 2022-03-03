@@ -9,7 +9,6 @@
 
 <style>
   button {
-    outline: none;
     background: none;
     border: none;
     padding: 0.8em;
@@ -17,7 +16,7 @@
     font-family: 'Montserrat';
     font-size: 0.9rem;
     cursor: pointer;
-    transition: all 200ms;
+    transition: background-color 200ms, border-color 200ms, color 200ms;
   }
 
   button.default {
