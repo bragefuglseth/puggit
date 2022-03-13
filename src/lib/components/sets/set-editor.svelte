@@ -2,6 +2,7 @@
   import { sets } from '$lib/stores/sets.js';
   import { goto } from '$app/navigation';
   import { fade } from 'svelte/transition';
+  import { flip } from 'svelte/animate';
   import { v4 as uuidV4 } from 'uuid';
   import Input from '$lib/components/input.svelte';
   import Button from '$lib/components/button.svelte';
@@ -87,7 +88,11 @@
   />
   <div class="form-elements">
     {#each set.elements as element (element.id)}
-      <div in:fade|local={{ duration: 200 }} class="term-definition-container">
+      <div
+        transition:fade|local={{ duration: 200 }}
+        animate:flip={{ duration: 200 }}
+        class="term-definition-container"
+      >
         <Card>
           <div class="term-definition">
             <div>
@@ -107,14 +112,16 @@
             </div>
           </div>
         </Card>
+        {#if removeMode}
+          <div class="remove-button-container">
+            <Button
+              on:click={() => {
+                removeElement(element.id);
+              }}>Remove</Button
+            >
+          </div>
+        {/if}
       </div>
-      {#if removeMode}
-        <Button
-          on:click={() => {
-            removeElement(element.id);
-          }}>Remove element</Button
-        >
-      {/if}
     {/each}
     <div class="form-actions" in:fade={{ duration: 200 }}>
       <Button on:click={handleAdd}>Add element</Button>
@@ -149,5 +156,9 @@
     display: flex;
     justify-content: flex-start;
     gap: 1rem;
+  }
+
+  .remove-button-container {
+    text-align: center;
   }
 </style>
