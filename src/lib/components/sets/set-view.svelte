@@ -11,10 +11,10 @@
         <Card>
           <div class="element">
             <div class="phrase">
-              <p>{element[0][0]}</p>
+              <p>{element.terms[0][0]}</p>
             </div>
             <div class="phrase">
-              <p>{element[1][0]}</p>
+              <p>{element.terms[1][0]}</p>
             </div>
           </div>
         </Card>

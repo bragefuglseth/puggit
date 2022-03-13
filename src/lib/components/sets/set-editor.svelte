@@ -2,6 +2,7 @@
   import { sets } from '$lib/stores/sets.js';
   import { goto } from '$app/navigation';
   import { fade } from 'svelte/transition';
+  import { v4 as uuidV4 } from 'uuid';
   import Input from '$lib/components/input.svelte';
   import Button from '$lib/components/button.svelte';
   import Card from '$lib/components/card.svelte';
@@ -9,14 +10,23 @@
   export let set = {
     name: '',
     id: undefined,
-    elements: [[[''], ['']]],
+    elements: [newBlankElement()],
   };
+
+  let removeMode = false;
 
   let formError = '';
 
+  function newBlankElement() {
+    return {
+      id: uuidV4(),
+      terms: [[''], ['']],
+    };
+  }
+
   function addElement() {
     const currentElements = set.elements;
-    set.elements = [...currentElements, [[''], ['']]];
+    set.elements = [...currentElements, newBlankElement()];
   }
 
   function handleAdd() {
@@ -32,10 +42,9 @@
 
   function handleSubmit() {
     formError = '';
-    // This way of assigning IDs is unbreakable unless the user intentionally messes with it.
-    // If a database system is added in the future, it needs to be reworked
+    // If a database system is added in the future, this needs to be reworked
     if (!set.id) {
-      set.id = Date.now().toString(16);
+      set.id = uuidV4();
     }
     sets.update((sets) => {
       return sets.filter((validationSet) => {
@@ -47,7 +56,7 @@
     if (set.name.trim().length > 39)
       return (formError = "The name of your set can't exceed 30 characters");
     for (const element of set.elements) {
-      if (!element[0][0].trim() || !element[1][0].trim())
+      if (!element.terms[0][0].trim() || !element.terms[1][0].trim())
         return (formError = "Fields can't be empty");
     }
 
@@ -56,6 +65,14 @@
     });
 
     goto(`/set/${set.id}`);
+  }
+
+  function removeElement(id) {
+    set.elements = set.elements.filter((element) => element.id !== id);
+  }
+
+  function toggleRemoveMode() {
+    removeMode = removeMode === false ? true : false;
   }
 </script>
 
@@ -69,14 +86,14 @@
     placeholder="Enter a name for your set…"
   />
   <div class="form-elements">
-    {#each set.elements as element}
-      <div in:fade|local={{ duration: 200 }}>
+    {#each set.elements as element (element.id)}
+      <div in:fade|local={{ duration: 200 }} class="term-definition-container">
         <Card>
           <div class="term-definition">
             <div>
               <Input
                 name={`input-a-${set.elements.indexOf(element)}`}
-                bind:value={element[0][0]}
+                bind:value={element.terms[0][0]}
                 label="Term"
               />
             </div>
@@ -84,18 +101,26 @@
             <div>
               <Input
                 name={`input-b-${set.elements.indexOf(element)}`}
-                bind:value={element[1][0]}
+                bind:value={element.terms[1][0]}
                 label="Definition"
               />
             </div>
           </div>
         </Card>
       </div>
+      {#if removeMode}
+        <Button
+          on:click={() => {
+            removeElement(element.id);
+          }}>Remove element</Button
+        >
+      {/if}
     {/each}
-    <Button on:click={handleAdd}>Add element</Button>
-  </div>
-  <div>
-    <Button type="primary" on:click={handleSubmit}>Save</Button>
+    <div class="form-actions" in:fade={{ duration: 200 }}>
+      <Button on:click={handleAdd}>Add element</Button>
+      <Button on:click={toggleRemoveMode}>Remove elements</Button>
+      <Button type="primary" on:click={handleSubmit}>Save</Button>
+    </div>
   </div>
 
   {#if formError}
@@ -118,5 +143,11 @@
 
   .term-definition > * {
     flex-grow: 1;
+  }
+
+  .form-actions {
+    display: flex;
+    justify-content: flex-start;
+    gap: 1rem;
   }
 </style>
